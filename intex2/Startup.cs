@@ -12,6 +12,7 @@ using intex2.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using intex2.Models;
 
 namespace intex2
 {
@@ -38,6 +39,9 @@ namespace intex2
 
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
+
+            services.AddDbContext<MummyDBContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:MummyDBConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

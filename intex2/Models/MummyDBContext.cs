@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace intex2.Model
+namespace intex2.Models
 {
     public partial class MummyDBContext : DbContext
     {
