@@ -13,9 +13,12 @@ namespace intex2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private MummyDBContext context { get; set; }
+
+        public HomeController(ILogger<HomeController> logger, MummyDBContext ctx)
         {
             _logger = logger;
+            context = ctx; 
         }
 
         public IActionResult Index()

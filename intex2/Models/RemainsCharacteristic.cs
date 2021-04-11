@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace intex2.Model
+namespace intex2.Models
 {
     public partial class RemainsCharacteristic
     {
