@@ -1,0 +1,11 @@
+﻿@page
+<h4 class="bg-danger text-white text-center p-2">Access Denied</h4>
+<div class="m-2">
+    <h6>You are not authorized for this URL</h6>
+    <a class="btn btn-outline-danger" href="/pages">OK</a>
+    <a class="btn btn-outline-secondary" asp-page="Logout">Logout</a>
+</div>
+
+@*This page displays a warning message to the user, with a button that navigates to the root URL. There is typically little the
+user can do to resolve authorization failures without administrative intervention, and my preference is to keep the access denied
+response as simple as possible*@

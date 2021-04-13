@@ -1,0 +1,62 @@
+﻿@page
+@model ListModel
+    @*Description: The UserManager<IdentityUser>
+        class is set up as a service so that it can be consumed via dependency injection. The Users
+        property returns a collection of IdentityUser objects, which can be used to enumerate the user accounts. This Razor Page displays
+        the users in a table, with buttons that allow each user to be edited or deleted, although this won’t be visible initially because a
+        placeholder message is shown when there are no user objects to display. There is a button that navigates to a Razor Page named
+        Create, which I define in the next section.*@
+
+<table class="table table-sm table-bordered">
+    <tr><th>ID</th><th>Name</th><th>Email</th><th></th></tr>
+    @if (Model.Users.Count() == 0)
+    {
+        <tr><td colspan="4" class="text-center">No User Accounts</td></tr>
+    }
+    else
+    {
+        foreach (IdentityUser user in Model.Users)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td class="text-center">
+                    <form asp-page="List" method="post">
+                        <input type="hidden" name="Id" value="@user.Id" />
+                        <a class="btn btn-sm btn-warning" asp-page="Editor"
+                            asp-route-id="@user.Id" asp-route-mode="edit">Edit</a>
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
+<a class="btn btn-primary" asp-page="create">Create</a>
+@functions {
+    public class ListModel : PageModel
+    {
+        public UserManager<IdentityUser> UserManager;
+        public ListModel(UserManager<IdentityUser> userManager)
+        {
+            UserManager = userManager;
+        }
+        public IEnumerable<IdentityUser> Users { get; set; }
+        public void OnGet()
+        {
+            Users = UserManager.Users;
+        }
+        public async Task<IActionResult> OnPostAsync(string id)
+        {
+            IdentityUser user = await UserManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                await UserManager.DeleteAsync(user);
+            }
+            return RedirectToPage();
+        }
+    }
+}

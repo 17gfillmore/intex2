@@ -1,0 +1,44 @@
+﻿
+@*Page to show all records in Database and Filter by Category*@
+
+@*@model ...*@
+
+@page
+<div class="text-center">
+    <h1 class="h1">Fag el-Gamous Database</h1>
+
+    <p>Content where the database is going to show</p>
+
+    @*Space for Database Table Rough Draft
+        <table class="table table-bordered table-hover table-secondary">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach(var x in Model)
+                {
+                    <tr>
+                        <td></td>
+                    </tr>
+
+                     <td>
+                        <form asp-action="SingleEntry" asp-action="Home" method="get">
+                            <input type="hidden" name="Id" value="@x.Id" />
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                View All Record Info
+                            </button>
+                        </form>
+                    </td>
+                }
+
+           </tbody>
+        </table>*@
+</div>
