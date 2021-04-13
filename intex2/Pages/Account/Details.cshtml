@@ -1,8 +1,11 @@
 ﻿@page
+
 @model DetailsModel
+
 <!--The HttpContext.User property can be accessed through the User convenience property defined by the PageModel and
 ControllerBase classes. This Razor Page confirms that there is an authenticated user associated with the request and gets the
 IdentityUser object that describes the user-->
+
 <table class="table table-sm table-bordered">
     <tbody>
         @if (Model.IdentityUser == null)
@@ -17,6 +20,7 @@ IdentityUser object that describes the user-->
         }
         </tbody>
 </table>
+
 @functions {
     public class DetailsModel : PageModel
     {
