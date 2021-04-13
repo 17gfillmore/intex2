@@ -1,16 +1,121 @@
 ﻿@page "{id}"
+
 @model EditorModel
 
-<!--The user is presented with a table showing the users who are members of the role and with a table showing nonmembers. Each
-row contains a Change button that submits the form. The OnPostAsync method uses the UserManager.FindByIdAsync method to
-retrieve the user object from the database. The IsInRoleAsync method is used to determine whether the user is a member of the
-role, and the AddToRoleAsync and RemoveFromRoleAsync methods are used to add and remove the user, respectively.-->
+<!--
+    The user is presented with a table showing the users who are members of the role and with a table showing nonmembers. Each
+    row contains a Change button that submits the form. The OnPostAsync method uses the UserManager.FindByIdAsync method to
+    retrieve the user object from the database. The IsInRoleAsync method is used to determine whether the user is a member of the
+    role, and the AddToRoleAsync and RemoveFromRoleAsync methods are used to add and remove the user, respectively.
+-->
+
+<!-- start section -->
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Edit Role: @Model.Role.Name</h5>
+                <p class="m-0 d-block">Edit the table below to manage the roles within the organization.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                <div>
+                    <div class="swiper-wrapper">
+                        <!-- start info banner slider item -->
+                        <div class="swiper-slide box-shadow-small">
+                            <div class="position-relative bg-white padding-3-rem-all">
+                                <form method="post">
+                                    <input type="hidden" name="rolename" value="@Model.Role.Name" />
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <h5 class="bg-secondary text-white p-2">@Model.Role.Name</h5>
+
+                                    <table class="table table-sm table-striped table-bordered">
+                                        <thead><tr><th>User</th><th>Email</th><th></th></tr></thead>
+                                        <tbody>
+                                            @if ((await Model.Members()).Count() == 0)
+                                            {
+                                                <tr><td colspan="3" class="text-center">No @Model.Role.Name/s</td></tr>
+                                            }
+                                            @foreach (IdentityUser user in await Model.Members())
+                                            {
+                                                <tr>
+                                                    <td>@user.UserName</td>
+                                                    <td>@user.Email</td>
+                                                    <td>
+                                                        <button asp-route-userid="@user.Id"
+                                                                class="btn btn-primary btn-sm" type="submit">
+                                                            Remove
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table><br />
+
+                                    <h5 class="bg-secondary text-white p-2">Non-@Model.Role.Name</h5>
+
+                                    <table class="table table-sm table-striped table-bordered">
+                                        <thead><tr><th>User</th><th>Email</th><th></th></tr></thead>
+                                        <tbody>
+                                            @if ((await Model.NonMembers()).Count() == 0)
+                                            {
+                                                <tr><td colspan="3" class="text-center">No non-members</td></tr>
+                                            }
+                                            @foreach (IdentityUser user in await Model.NonMembers())
+                                            {
+                                                <tr>
+                                                    <td>@user.UserName</td>
+                                                    <td>@user.Email</td>
+                                                    <td>
+                                                        <button asp-route-userid="@user.Id"
+                                                                class="btn btn-primary btn-sm" type="submit">
+                                                            Add
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </form>
+
+                                <a class="btn btn-secondary" asp-page="list">Back</a>
+                            </div>
+                        </div>
+                        <!-- end info banner slider item -->
+                    </div>
+                </div>
+            </div>
+        </div><br><br><br>
+    </div>
+</section>
+<!-- end section -->
+
+<style>
+    .btn.btn-outline-dark-gray {
+        background: #fff;
+        border-color: #232323;
+        color: #232323;
+    }
+
+        .btn.btn-outline-dark-gray:hover {
+            background: #232323;
+            border-color: #232323;
+            color: #fff;
+            padding: .375rem .75rem;
+        }
+</style>
+
 
 <h5 class="bg-primary text-white text-center p-2">Edit Role: @Model.Role.Name</h5>
 <form method="post">
     <input type="hidden" name="rolename" value="@Model.Role.Name" />
+    
     <div asp-validation-summary="All" class="text-danger"></div>
+    
     <h5 class="bg-secondary text-white p-2">@Model.Role.Name</h5>
+    
     <table class="table table-sm table-striped table-bordered">
         <thead><tr><th>User</th><th>Email</th><th></th></tr></thead>
         <tbody>
@@ -32,8 +137,10 @@ role, and the AddToRoleAsync and RemoveFromRoleAsync methods are used to add and
                 </tr>
             }
         </tbody>
-    </table>
+    </table><br />
+    
     <h5 class="bg-secondary text-white p-2">Non-@Model.Role.Name</h5>
+    
     <table class="table table-sm table-striped table-bordered">
         <thead><tr><th>User</th><th>Email</th><th></th></tr></thead>
         <tbody>
@@ -56,8 +163,11 @@ role, and the AddToRoleAsync and RemoveFromRoleAsync methods are used to add and
             }
         </tbody>
     </table>
+
 </form>
+
 <a class="btn btn-secondary" asp-page="list">Back</a>
+
 @functions {
     public class EditorModel : AdminPageModel
     {

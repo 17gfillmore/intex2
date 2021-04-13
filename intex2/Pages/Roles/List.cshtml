@@ -1,38 +1,86 @@
 ﻿@page
+
 @model ListModel
-<!-- The roles are enumerated, along with the names of up to three of the role members or a placeholder message if there are no
-members. There is also a Create button, and each role is presented with Edit and Delete buttons, following the same pattern I used
-for the user management tools.-->
-<table class="table table-sm table-bordered">
-    <tr><th>ID</th><th>Role Name</th><th>Members</th><th></th></tr>
-    @if (Model.Roles.Count() == 0)
-    {
-        <tr><td colspan="4" class="text-center">No Roles</td></tr>
+<!--
+    The roles are enumerated, along with the names of up to three of the role members or a placeholder message if there are no
+    members. There is also a Create button, and each role is presented with Edit and Delete buttons, following the same pattern I used
+    for the user management tools.
+-->
+
+<!-- start section -->
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Manage Roles</h5>
+                <p class="m-0 d-block">Edit the table below to manage the roles within the organization.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                <div>
+                    <div class="swiper-wrapper">
+                        <!-- start info banner slider item -->
+                        <div class="swiper-slide box-shadow-small">
+                            <div class="position-relative bg-white padding-3-rem-all">
+                                <table class="table table-sm table-bordered">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Role Name</th>
+                                        <th>Members</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    @if (Model.Roles.Count() == 0)
+                                    {
+                                        <tr><td colspan="4" class="text-center">No Roles</td></tr>
+                                    }
+                                    else
+                                    {
+                                        foreach (IdentityRole role in Model.Roles)
+                                        {
+                                <tr>
+                                    <td>@role.Id</td>
+                                    <td>@role.Name</td>
+                                    <td>Researcher</td> @*@(await Model.GetMembersString(role.Name))*@
+                                    <td class="text-center">
+                                        <form asp-page="List" method="post">
+                                            <input type="hidden" name="Id" value="@role.Id" />
+                                            <a class="btn btn-sm btn-golden" asp-page="Editor" asp-route-id="@role.Id" asp-route-mode="edit">Manage</a>
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                        }
+                                    }
+                                </table>
+                                <a class="btn btn-fancy btn-dark-gray" asp-page="Create">New Role</a>
+                                <a class="btn btn-fancy btn-outline-dark-gray" href="/Account/logout">Logout</a>
+                            </div>
+                        </div>
+                        <!-- end info banner slider item -->
+                    </div>
+                </div>
+            </div>
+        </div><br><br><br>
+    </div>
+</section>
+<!-- end section -->
+
+<style>
+    .btn.btn-outline-dark-gray {
+        background: #fff;
+        border-color: #232323;
+        color: #232323;
     }
-    else
-    {
-        foreach (IdentityRole role in Model.Roles)
-        {
-            <tr>
-                <td>@role.Id</td>
-                <td>@role.Name</td>
-                @*<td>@(await Model.GetMembersString(role.Name))</td>*@
-                <td class="text-center">
-                    <form asp-page="List" method="post">
-                        <input type="hidden" name="Id" value="@role.Id" />
-                        <a class="btn btn-sm btn-warning" asp-page="Editor"
-                           asp-route-id="@role.Id" asp-route-mode="edit">Manage</a>
-                        <button type="submit" class="btn btn-sm btn-danger">
-                            Delete
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        }
+
+    .btn.btn-outline-dark-gray:hover {
+        background: #232323;
+        border-color: #232323;
+        color: #fff;
+        padding: .375rem .75rem;
     }
-</table>
-<a class="btn btn-primary" asp-page="create">New Role</a>
-<a class="btn btn-primary" href="/Account/logout">Logout</a>
+</style>
+
 @functions {
     public class ListModel : AdminPageModel
     {

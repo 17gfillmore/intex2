@@ -1,23 +1,46 @@
 ﻿@page "/pages"
+
 @model DetailsModel
 <!--This is the index page after the user logs in-->
 
-<h4 class="bg-primary text-white text-center p-2">Data</h4>
-
-<h4>Welcome @Model.IdentityUser.UserName </h4>
-<br />
-<p>This is the home page after the user logs in</p>
-<br />
-
-<!--Dynamic options based upon the kind of user-->
-@if (Model.IdentityUser.UserName == "admin")
-{
-    <a class="btn btn-primary" href="/Roles/List">Manage Admin Users</a>
-}
-else
-{
-    <a class="btn btn-primary" href="/Users/MomiasDatabase">Look through database</a>
-}
+<!-- start section -->
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Welcome @Model.IdentityUser.UserName</h5>
+                <p class="m-0 d-block">See the quick links on the dashboard below to best help you do you job!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                <div>
+                    <div class="swiper-wrapper">
+                        <!-- start info banner slider item -->
+                        <div class="swiper-slide box-shadow-small">
+                            <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large">
+                                <!--Dynamic options based upon the kind of user-->
+                                <h3>Your Dashboard</h3>
+                                @if (Model.IdentityUser.UserName == "admin")
+                                {
+                                    <a class="btn btn-fancy btn-medium btn-dark-gray" href="/Roles/List">Manage Admin Users</a>
+                                    <a class="btn btn-fancy btn-medium btn-outline-dark-gray" href="/Users/SingleEntry">Add or Edit Records</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-fancy btn-medium btn-dark-gray" href="/Users/MomiasDatabase">Look through database</a>
+                                    <a class="btn btn-fancy btn-medium btn-outline-dark-gray" href="/Users/SingleEntry">Add or Edit Record</a>
+                                }
+                            </div>
+                        </div>
+                        <!-- end info banner slider item -->
+                    </div>
+                </div>
+            </div>
+        </div><br><br><br>
+    </div>
+</section>
+<!-- end section -->
 
 <!--Imports the model where the username and email is stored is stored-->
 @functions {

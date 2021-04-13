@@ -2,7 +2,245 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="main-content">
+    <!-- start section -->
+    <section class="p-0">
+        <div class="container-fluid position-relative">
+            <div class="row">
+                <div class="swiper-container white-move full-screen md-h-650px sm-h-500px" data-slider-options='{ "slidesPerView": 1, "loop": true, "autoplay": { "delay": 8500, "disableOnInteraction": false },  "pagination": { "el": ".swiper-pagination", "clickable": true }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
+                    <div class="swiper-wrapper">
+                        <!-- start slider item -->
+                        <div class="swiper-slide cover-background" style="background-image: url('/images/SandDunes.jpg');">
+                            <div class="opacity-extra-medium bg-dark-slate-blue"></div>
+                            <div class="container h-100">
+                                <div class="row justify-content-center h-100">
+                                    <div class="col-12 col-xl-6 col-sm-7 d-flex flex-column justify-content-center text-center h-100">
+                                        <span class="alt-font font-weight-500 text-extra-medium letter-spacing-2px text-white text-uppercase d-block margin-35px-bottom sm-margin-15px-bottom">BYU's Egypt Excavation Project team presents</span>
+                                        <h1 class="alt-font font-weight-600 title-medium text-white text-uppercase letter-spacing-minus-4px margin-45px-bottom sm-letter-spacing-minus-1px sm-margin-30px-bottom text-shadow-large sm-no-text-shadow xs-w-90 mx-auto">The Mummy<br>gallery</h1>
+                                        <a asp-controller="Home" asp-action="Gallery" class="btn btn-fancy btn-large btn-dark-gray btn-box-shadow align-self-center">View Gallery</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end slider item -->
+                        <!-- start slider item -->
+                        <div class="swiper-slide cover-background" style="background-image: url('/images/ExcavationSite.jpg');">
+                            <div class="opacity-extra-medium bg-dark-slate-blue"></div>
+                            <div class="container h-100">
+                                <div class="row justify-content-center h-100">
+                                    <div class="col-12 col-xl-6 col-sm-7 d-flex flex-column justify-content-center text-center h-100">
+                                        <span class="alt-font font-weight-500 text-extra-medium letter-spacing-2px text-white text-uppercase d-block margin-35px-bottom sm-margin-15px-bottom">BYU's Fag El Gamous Excavation site presents</span>
+                                        <h1 class="alt-font font-weight-600 title-medium text-white text-uppercase letter-spacing-minus-4px margin-45px-bottom sm-letter-spacing-minus-1px sm-margin-30px-bottom text-shadow-large sm-no-text-shadow xs-w-90 mx-auto">Burial research</h1>
+                                        <a href="/Account/Login" class="btn btn-fancy btn-large btn-dark-gray btn-box-shadow align-self-center">Add Research</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end slider item -->
+                        <!-- start slider item -->
+                        <div class="swiper-slide cover-background" style="background-image: url('/images/BYUMummy.jpg');">
+                            <div class="opacity-extra-medium bg-dark-slate-blue"></div>
+                            <div class="container h-100">
+                                <div class="row justify-content-center h-100">
+                                    <div class="col-12 col-xl-6 col-sm-7 d-flex flex-column justify-content-center text-center h-100">
+                                        <span class="alt-font font-weight-500 text-extra-medium letter-spacing-2px text-white text-uppercase d-block margin-35px-bottom sm-margin-15px-bottom">BYU's Fag El Gamous Excavation site presents</span>
+                                        <h1 class="alt-font font-weight-600 title-medium text-white text-uppercase letter-spacing-minus-4px margin-45px-bottom sm-letter-spacing-minus-1px sm-margin-30px-bottom text-shadow-large sm-no-text-shadow xs-w-70 mx-auto">Burial Database</h1>
+                                        <a asp-controller="Home" asp-action="Search" class="btn btn-fancy btn-large btn-dark-gray btn-box-shadow align-self-center">Search Mummies</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end slider item -->
+                    </div>
+                    <!-- start slider pagination -->
+                    <div class="swiper-pagination swiper-light-pagination d-sm-none"></div>
+                    <!-- end slider pagination -->
+                    <!-- start slider navigation -->
+                    <div class="swiper-button-next-nav swiper-button-next rounded-circle slider-navigation-style-07 d-none d-sm-flex"><i class="feather icon-feather-arrow-right"></i></div>
+                    <div class="swiper-button-previous-nav swiper-button-prev rounded-circle slider-navigation-style-07 d-none d-sm-flex"><i class="feather icon-feather-arrow-left"></i></div>
+                    <!-- end slider navigation -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section class="bg-light-gray">
+        <div class="container">
+            <div class="row margin-6-rem-bottom md-margin-5-rem-bottom align-items-center">
+                <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                    <h5 class="alt-font font-weight-600 text-extra-dark-gray text-uppercase margin-5px-bottom letter-spacing-minus-1px">Mummy Research</h5>
+                    <p class="m-0 d-block test">For the past 25 years, BYU has been researching the Fag El-Gamous excavation site. The team has unearthed thousands of mummies and have the pictures and research to prove it. Click the burials below to view these mummies!</p>
+                </div>
+                <div class="col-12 col-lg-6 col-md-5 text-center text-md-right wow animate__fadeIn" data-wow-delay="0.2s">
+                    <a asp-controller="Home" asp-action="Gallery" class="btn btn-link btn-extra-large text-extra-dark-gray text-extra-dark-gray-hover">all mummies</a>
+                </div>
+            </div>
+            <div class="row text-center row-cols-1 row-cols-lg-4 row-cols-sm-2">
+                <!-- start interactive banner item -->
+                <div class="col interactive-banners-style-01 margin-30px-bottom xs-margin-15px-bottom wow animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="interactive-banners-image border-radius-6px bg-dark-slate-blue">
+                        <img src="/images/mummy1.jpg" class="scale" alt="" />
+                        <div class="interactive-banners-hover">
+                            <div class="d-table h-100 w-100">
+                                <div class="d-table-cell align-bottom padding-3-half-rem-tb xs-padding-6-half-rem-tb">
+                                    <a asp-controller="Home" asp-action="Mummy" class="rounded-icon bg-neon-orange interactive-banners-icon"><i class="feather icon-feather-arrow-right text-white"></i></a>
+                                    <div class="font-weight-500 line-height-normal alt-font text-uppercase interactive-banners-sub-title"><a asp-controller="Home" asp-action="Mummy" class="text-white text-medium text-decoration-line-bottom">Explore Burial</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end interactive banner item -->
+                <!-- start interactive banner item -->
+                <div class="col interactive-banners-style-01 margin-30px-bottom xs-margin-15px-bottom wow animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="interactive-banners-image border-radius-6px bg-dark-slate-blue">
+                        <img src="/images/mummy2.jpg" class="scale" alt="" />
+                        <div class="interactive-banners-hover">
+                            <div class="d-table h-100 w-100">
+                                <div class="d-table-cell align-bottom padding-3-half-rem-tb xs-padding-6-half-rem-tb">
+                                    <a asp-controller="Home" asp-action="Mummy" class="rounded-icon bg-neon-orange interactive-banners-icon"><i class="feather icon-feather-arrow-right text-white"></i></a>
+                                    <div class="font-weight-500 line-height-normal alt-font text-uppercase interactive-banners-sub-title"><a asp-controller="Home" asp-action="Mummy" class="text-white text-medium text-decoration-line-bottom">Explore Burial</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end interactive banner item -->
+                <!-- start interactive banner item -->
+                <div class="col interactive-banners-style-01 margin-30px-bottom xs-margin-15px-bottom wow animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="interactive-banners-image border-radius-6px bg-dark-slate-blue">
+                        <img src="~/images/mummy3.jpg" class="scale" alt="" />
+                        <div class="interactive-banners-hover">
+                            <div class="d-table h-100 w-100">
+                                <div class="d-table-cell align-bottom padding-3-half-rem-tb xs-padding-6-half-rem-tb">
+                                    <a asp-controller="Home" asp-action="Mummy" class="rounded-icon bg-neon-orange interactive-banners-icon"><i class="feather icon-feather-arrow-right text-white"></i></a>
+                                    <div class="font-weight-500 line-height-normal alt-font text-uppercase interactive-banners-sub-title"><a asp-controller="Home" asp-action="Mummy" class="text-white text-medium text-decoration-line-bottom">Explore Burial</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end interactive banner item -->
+                <!-- start interactive banner item -->
+                <div class="col interactive-banners-style-01 margin-30px-bottom xs-margin-15px-bottom wow animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="interactive-banners-image border-radius-6px bg-dark-slate-blue">
+                        <img src="/images/mummy4.jpg" class="scale" alt="" />
+                        <div class="interactive-banners-hover">
+                            <div class="d-table h-100 w-100">
+                                <div class="d-table-cell align-bottom padding-3-half-rem-tb xs-padding-6-half-rem-tb">
+                                    <a asp-controller="Home" asp-action="Mummy" class="rounded-icon bg-neon-orange interactive-banners-icon"><i class="feather icon-feather-arrow-right text-white"></i></a>
+                                    <div class="font-weight-500 line-height-normal alt-font text-uppercase interactive-banners-sub-title"><a asp-controller="Home" asp-action="Mummy" class="text-white text-medium text-decoration-line-bottom">Explore Burial</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end interactive banner item -->
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section class="cover-background overlap-height" style="background-image: url('/images/ExcavationSite.jpg');">
+        <div class="opacity-extra-medium bg-dark-slate-blue"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="text-center z-index-1 overlap-gap-section wow animate__fadeIn" data-wow-delay="0.4s">
+                    <span class="fas fa-search icon-extra-large text-white margin-30px-bottom"></span>
+                    <h4 class="alt-font font-weight-500 text-white letter-spacing-minus-1px margin-30px-bottom xs-margin-25px-bottom">Want to find a specific mummy?<br>Try searching below!</h4>
+                    <span class="alt-font font-weight-500 text-white text-uppercase letter-spacing-2px">Enter your search below or <a asp-controller="Home" asp-action="Mummy" style="color: #fff">click here</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 overlap-section wow animate__flipInX" data-wow-delay="0.2s">
+                    <div class="bg-golden border-radius-6px d-flex flex-column flex-lg-row align-items-center padding-40px-tb padding-7-rem-lr lg-padding-5-rem-lr xs-padding-2-rem-lr">
+                        <h6 class="alt-font font-weight-500 text-extra-dark-gray letter-spacing-minus-1px w-45 mb-lg-0 lg-w-50 md-w-100 text-center text-lg-left md-margin-30px-bottom xs-margin-20px-bottom">Search mummies by age, gender,<br>hair color, and more!</h6>
+                        <div class="newsletter-email position-relative w-55 lg-w-50 md-w-100">
+                            <a asp-controller="Home" asp-action="Search" class="btn btn-fancy btn-large btn-white btn-box-shadow align-self-center" style="border: 1px solid #000">Search Mummies</a>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br><br>
+            <div class="container">
+                <div class="row margin-5-half-rem-bottom align-items-center">
+                    <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                        <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">See the Stats</h5>
+                        <p class="m-0 d-block">Our research team has collected enough data to last you years. See the stats!</p>
+                    </div>
+                    <div class="col-12 col-lg-6 col-md-5 text-center text-md-right wow animate__fadeIn" data-wow-delay="0.2s">
+                        <a asp-controller="Home" asp-action="Mummy" class="btn btn-link btn-extra-large text-extra-dark-gray text-extra-dark-gray-hover">All mummies</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                        <div class="swiper-container h-auto padding-15px-all black-move" data-slider-options='{ "loop": true, "slidesPerView": 1, "spaceBetween": 30,  "observer": true, "observeParents": true, "navigation": { "nextEl": ".swiper-button-next-nav-3", "prevEl": ".swiper-button-previous-nav-3" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 3 }, "992": { "slidesPerView": 2 }, "768": { "slidesPerView": 1 } }, "effect": "slide" }'>
+                            <div class="swiper-wrapper">
+                                <!-- start info banner slider item -->
+                                <div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
+                                    <a asp-controller="Home" asp-action="Mummy">
+                                        <img src="/images/mummy5.jpg" alt="mummy">
+                                        <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr">
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Location:</span> 120/130 N 10/20 NW #49,50<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Gender:</span> Male<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Length:</span> 168 cm<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Teeth:</span> 4<br>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- end info banner slider item -->
+                                <!-- start info banner slider item -->
+                                <div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
+                                    <a asp-controller="Home" asp-action="Mummy">
+                                        <img src="/images/mummy6.jpg" alt="mummy">
+                                        <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr">
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Location:</span> 10/20 N 20/30 NW #25,26<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Gender:</span> Female<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Length:</span> 151 cm<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Teeth:</span> 5<br>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- end info banner slider item -->
+                                <!-- start info banner slider item -->
+                                <div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
+                                    <a asp-controller="Home" asp-action="Mummy">
+                                        <img src="/images/mummy7.jpg" alt="mummy">
+                                        <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr">
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Location:</span> 30/40 N 60/70 SW #14,15<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Gender:</span> Male<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Length:</span> 143 cm<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Teeth:</span> 2<br>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- end info banner slider item -->
+                                <!-- start info banner slider item -->
+                                <div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
+                                    <a asp-controller="Home" asp-action="Mummy">
+                                        <img src="/images/mummy8.jpg" alt="mummy">
+                                        <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr">
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Location:</span> 100/110 N 10/20 NW #18<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Gender:</span> Female<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Length:</span> 138 cm<br>
+                                            <span class="alt-font font-weight-500 text-extra-dark-gray">Teeth:</span> 3<br>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- end info banner slider item -->
+                            </div>
+                        </div>
+                        <div class="swiper-button-next-nav-3 swiper-button-next rounded-circle light slider-navigation-style-07 box-shadow-double-large" tabindex="0" role="button" aria-label="Next slide"><i class="feather icon-feather-arrow-right"></i></div>
+                        <div class="swiper-button-previous-nav-3 swiper-button-prev rounded-circle light slider-navigation-style-07 box-shadow-double-large" tabindex="0" role="button" aria-label="Previous slide"><i class="feather icon-feather-arrow-left"></i></div>
+                    </div>
+                </div><br><br><br>
+            </div>
+    </section>
+    <!-- end section -->
 </div>
