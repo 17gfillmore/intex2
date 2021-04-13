@@ -2,46 +2,80 @@
 @page
 @model ListModel
 
-<div class="text-center">
-    <h1 class="h1">Fag el-Gamous Record Entry</h1>
+<!-- start section -->
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Add Burial Record</h5>
+                <p class="m-0 d-block">Fill in the information below and then click submit. Remember, don't skip a box!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                <div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide box-shadow-small">
+                            <!-- start location records -->
+                            <button type="button" class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large my-collapsible" style="padding: 17px;">I. Location</button>
+                            <div class="my-content">
+                                <div class="row"></div>
+                                <div class="col-12 text-center">
+                                    <div class="bg-medium-dark-gray"></div>
+                                    <div class="row">
+                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-black text-md-left">
+                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+                                        </div>
+                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-center text-md-left">
+                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br><br>
+                            <!-- start location records -->
+                            <!-- start mummy records -->
+                            <button type="button" class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large my-collapsible" style="padding: 17px;">II. Mummy</button>
+                            <div class="my-content">
+                                <div class="row"></div>
+                                <div class="col-12 text-center">
+                                    <div class="bg-medium-dark-gray"></div>
+                                    <div class="row">
+                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-black text-md-left">
+                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+                                        </div>
+                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-center text-md-left">
+                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br><br>
+                            <!-- end mummy records -->
+                            <!-- start artifact records -->
+                            <button type="button" class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large my-collapsible" style="padding: 17px;">III. Artifacts</button>
+                            <div class="my-content">
+                                <div class="row"></div>
+                                <div class="col-12 text-center">
+                                    <div class="bg-medium-dark-gray"></div>
+                                    <div class="row">
+                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-black text-md-left">
+                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+                                        </div>
+                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-center text-md-left">
+                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end artifact records -->
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+        </div><br><br><br>
+    </div>
+</section>
+<!-- end section -->
 
-    @*Space for Database Table Rough Draft
-        <table class="table table-bordered table-hover table-secondary">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-
-                @foreach(var x in Model)
-                {
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                }
-
-           </tbody>
-        </table>*@
-</div>
 @functions {
     public class ListModel : ResearchPageModel
     {

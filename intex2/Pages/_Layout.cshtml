@@ -1,61 +1,136 @@
-﻿
+﻿<!-- Authentication Layout -->
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] BYU Egypt Excavation Project</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"] - BYU Fag El-Gamous</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Mummies">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+    <meta name="description" content="The original template is from Litho.">
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="~/images/favicon.png">
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/images/apple-touch-icon-114x114.png">
+    <!-- style sheets and font icons  -->
+    <link rel="stylesheet" type="text/css" href="~/css/font-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/theme-vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/responsive.css" />
 </head>
-<body>
+<body data-mobile-nav-style="classic">
+    <!-- start header -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BYU Egypt Excavation Project</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Users/MomiasDatabase">Burial Database</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Users/SingleEntry">Add Records</a>
-                        </li>
-                        <li class="nav-item ml-auto">
-                            <a class="nav-link text-dark" href="/Account/Logout">Logout</a>
-                        </li>
-                    </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent border-bottom border-color-white-transparent header-light fixed-top navbar-boxed header-reverse-scroll">
+            <div class="container-fluid nav-header-container">
+                <!-- start logo -->
+                <div class="col-auto col-sm-6 col-lg-2 mr-auto pl-lg-0">
+                    <a class="nav-item text-black font-weight-700" asp-area="" asp-controller="Home" asp-action="Index">Researcher Pages</a>
+                </div>
+                <div class="col-auto col-lg-8 menu-order px-lg-0">
+                    <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav alt-font text-black">
+                            <li class="nav-item dropdown megamenu">
+                                <a class="nav-link" style="color: #000" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item dropdown megamenu">
+                                <a class="nav-link" style="color: #000" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                            </li>
+                            <li class="nav-item dropdown megamenu">
+                                <a class="nav-link" style="color: #000" href="/Users/MomiasDatabase">Database</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="/Users/SingleEntry">Add Record</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-auto col-lg-2 text-right pr-0">
+                    <span class="nav-bar-contact text-medium alt-font text-black font-weight-500 d-none d-sm-block">
+                        <a class="btn btn-outline-fancy" href="/Account/Login"><i class="far fa-user margin-10px-right"></i>Login</a>
+                    </span>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <!-- end header -->
+    <!-- start renderbody -->
+    <div>
+        @RenderBody()
     </div>
-
-    <!--Content of the Hoem page for the user-->
-
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - intex2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- end renderbody -->
+    <!-- start footer -->
+    <!-- start footer -->
+    <footer class="footer-light text-white cover-background" style="background-image: url('/images/SandDunes.jpg');">
+        <div class="opacity-extra-medium bg-dark-slate-blue"></div>
+        <div class="footer-top padding-six-tb lg-padding-seven-tb md-padding-50px-tb">
+            <div class="container">
+                <div class="row">
+                    <!-- start footer column -->
+                    <div class="col-12 col-md-3 col-sm-6 sm-margin-40px-bottom xs-margin-30px-bottom">
+                        <span class="alt-font font-weight-500 d-block text-white text-uppercase text-medium margin-15px-bottom xs-margin-10px-bottom letter-spacing-1px">Company</span>
+                        <ul>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">About Company</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">Our Mission</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <!-- end footer column -->
+                    <!-- start footer column -->
+                    <div class="col-12 col-md-3 col-sm-6 sm-margin-40px-bottom xs-margin-30px-bottom">
+                        <span class="alt-font font-weight-500 d-block text-white text-uppercase text-medium margin-15px-bottom xs-margin-10px-bottom letter-spacing-1px">Customer</span>
+                        <ul>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Client Support</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">Company Story</a></li>
+                        </ul>
+                    </div>
+                    <!-- end footer column -->
+                    <!-- start footer column -->
+                    <div class="col-12 col-md-3 col-sm-6 xs-margin-30px-bottom">
+                        <span class="alt-font font-weight-500 d-block text-white text-uppercase text-medium margin-15px-bottom xs-margin-10px-bottom letter-spacing-1px">Research</span>
+                        <ul>
+                            <li><a href="/Account/Login">Login</a></li>
+                            <li><a href="/Account/Login">Add Record</a></li>
+                            <li><a href="/Account/Login">View Records</a></li>
+                        </ul>
+                    </div>
+                    <!-- end footer column -->
+                    <!-- start footer column -->
+                    <div class="col-12 col-md-3 col-sm-6 xs-margin-30px-bottom">
+                        <br>
+                        <img src="~/images/byu-logo.png" width="240px">
+                    </div>
+                    <!-- end footer column -->
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom padding-one-top padding-six-bottom d-inline-block w-100">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-sm-8 text-center text-sm-right last-paragraph-no-margin">
+                        <p>&copy; 2021 BYU Fag El-Gamous Excavation Team</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    <!-- end footer -->
+    <!-- start scroll to top -->
+    <a class="scroll-top-arrow" href="javascript:void(0);"><i class="feather icon-feather-arrow-up"></i></a>
+    <!-- end scroll to top -->
+    <!-- javascript -->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/theme-vendors.min.js"></script>
+    <script type="text/javascript" src="~/js/main.js"></script>
 </body>
 </html>
+<!-- end footer -->

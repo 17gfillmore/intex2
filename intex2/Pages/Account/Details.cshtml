@@ -1,25 +1,65 @@
 ﻿@page
 
 @model DetailsModel
-
 <!--The HttpContext.User property can be accessed through the User convenience property defined by the PageModel and
 ControllerBase classes. This Razor Page confirms that there is an authenticated user associated with the request and gets the
 IdentityUser object that describes the user-->
 
-<table class="table table-sm table-bordered">
-    <tbody>
-        @if (Model.IdentityUser == null)
-        {
-            <tr><th class="text-center">No User</th></tr>
+<!-- start section -->
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Manage Roles</h5>
+                <p class="m-0 d-block">Edit the table below to manage the roles within the organization.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                <div>
+                    <div class="swiper-wrapper">
+                        <!-- start info banner slider item -->
+                        <div class="swiper-slide box-shadow-small">
+                            <div class="position-relative bg-white padding-3-rem-all">
+                                <table class="table table-sm table-bordered">
+                                    <tbody>
+                                        @if (Model.IdentityUser == null)
+                                        {
+                                            <tr><th class="text-center">No User</th></tr>
+                                        }
+                                        else
+                                        {
+                                            <tr><th>Name</th><td>@Model.IdentityUser.UserName</td></tr>
+                                            <tr><th>Email</th><td>@Model.IdentityUser.Email</td></tr>
+                                            //<tr><th>Role</th><td>@Model.IdentityRole.Name</td></tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- end info banner slider item -->
+                    </div>
+                </div>
+            </div>
+        </div><br><br><br>
+    </div>
+</section>
+<!-- end section -->
+
+<style>
+    .btn.btn-outline-dark-gray {
+        background: #fff;
+        border-color: #232323;
+        color: #232323;
+    }
+
+        .btn.btn-outline-dark-gray:hover {
+            background: #232323;
+            border-color: #232323;
+            color: #fff;
+            padding: .375rem .75rem;
         }
-        else
-        {
-            <tr><th>Name</th><td>@Model.IdentityUser.UserName</td></tr>
-            <tr><th>Email</th><td>@Model.IdentityUser.Email</td></tr>
-            //<tr><th>Role</th><td>@Model.IdentityRole.Name</td></tr>
-        }
-        </tbody>
-</table>
+</style>
 
 @functions {
     public class DetailsModel : PageModel
@@ -34,14 +74,14 @@ IdentityUser object that describes the user-->
 
         }
         public IdentityUser IdentityUser { get; set; }
-  
+
 
         public async Task OnGetAsync()
         {
             if (User.Identity.IsAuthenticated)
             {
                 IdentityUser = await userManager.FindByNameAsync(User.Identity.Name);
-            
+
             }
         }
     }

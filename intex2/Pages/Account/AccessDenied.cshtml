@@ -1,11 +1,23 @@
 ﻿@page
-<h4 class="bg-danger text-white text-center p-2">Access Denied</h4>
-<div class="m-2">
-    <h6>You are not authorized for this URL</h6>
-    <a class="btn btn-outline-danger" href="/pages">OK</a>
-    <a class="btn btn-outline-secondary" asp-page="Logout">Logout</a>
-</div>
+@*
+    This page displays a warning message to the user, with a button that navigates to the root URL. There is typically little the
+    user can do to resolve authorization failures without administrative intervention, and my preference is to keep the access denied
+    response as simple as possible
+*@
 
-@*This page displays a warning message to the user, with a button that navigates to the root URL. There is typically little the
-user can do to resolve authorization failures without administrative intervention, and my preference is to keep the access denied
-response as simple as possible*@
+
+
+<!-- start section -->
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="align-items-center">
+            <div class="text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h4 class="bg-danger alt-font font-weight-600 text-white letter-spacing-minus-1px text-uppercase margin-5px-bottom" style="padding: 5px;">Access Denied</h4>
+                <h6>You are not authorized for this URL</h6>
+                <a class="btn btn-outline-danger" style="border: 1px solid #000" href="/pages">OK</a>
+                <a class="btn btn-outline-secondary" style="border: 1px solid #000" asp-page="Logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->

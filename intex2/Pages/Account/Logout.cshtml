@@ -1,14 +1,37 @@
 ﻿@page
+
 @model LogoutModel
-<div class="bg-primary text-center text-white p-2"><h4>Log Out</h4></div>
-<div class="m-2">
-    <h6>You are logged out</h6>
-    <a asp-page="Login" class="btn btn-secondary">OK</a>
-</div>
+<!-- start section -->
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">You are Logged Out</h5>
+                <a class="btn btn-fancy btn-outline-dark-gray" asp-page="Login">OK</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<style>
+    .btn.btn-outline-dark-gray {
+        background: #fff;
+        border-color: #232323;
+        color: #232323;
+    }
+
+    .btn.btn-outline-dark-gray:hover {
+        background: #232323;
+        border-color: #232323;
+        color: #fff;
+        padding: .375rem .75rem;
+    }
+</style>
 
 @*This page calls the SignOutAsync method described in Table 39-2 to sign the application out of the application. The ASP.NET
-Core Identity cookie will be deleted so that the browser will not include it in future requests (and invalidated the cookie, so that
-requests will not be treated as authenticated even if the cookie is used again anyway)*@
+    Core Identity cookie will be deleted so that the browser will not include it in future requests (and invalidated the cookie, so that
+    requests will not be treated as authenticated even if the cookie is used again anyway)*@
 
 @functions {
     public class LogoutModel : PageModel
