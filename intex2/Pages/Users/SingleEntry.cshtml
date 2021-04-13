@@ -1,0 +1,54 @@
+﻿@*View for Showing One Entry in the Database*@
+@page
+@model ListModel
+
+<div class="text-center">
+    <h1 class="h1">Fag el-Gamous Record Entry</h1>
+
+    @*Space for Database Table Rough Draft
+        <table class="table table-bordered table-hover table-secondary">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach(var x in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                }
+
+           </tbody>
+        </table>*@
+</div>
+@functions {
+    public class ListModel : ResearchPageModel
+    {
+        public UserManager<IdentityUser> UserManager;
+        public ListModel(UserManager<IdentityUser> userManager)
+        {
+            UserManager = userManager;
+        }
+    }
+}

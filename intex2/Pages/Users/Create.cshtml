@@ -1,0 +1,68 @@
+﻿@page
+@model CreateModel
+<h5 class="bg-primary text-white text-center p-2">Create User</h5>
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label>User Name</label>
+        <input name="UserName" class="form-control" value="@Model.UserName" />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input name="Email" class="form-control" value="@Model.Email" />
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input name="Password" class="form-control" value="@Model.Password" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-secondary" asp-page="list">Back</a>
+</form>
+@functions {
+    public class CreateModel : AdminPageModel
+    {
+        public UserManager<IdentityUser> UserManager;
+        public CreateModel(UserManager<IdentityUser> usrManager)
+        {
+            UserManager = usrManager;
+        }
+        [BindProperty]
+        [Required]
+        public string UserName { get; set; }
+        [BindProperty]
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [BindProperty]
+        [Required]
+        public string Password { get; set; }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (ModelState.IsValid)
+            {
+                IdentityUser user =
+                new IdentityUser { UserName = UserName, Email = Email };
+                IdentityResult result =
+                await UserManager.CreateAsync(user, Password);
+
+                //I inspect the Succeeded property to determine whether a new user has been created in the database. If the Succeeded property 
+                //is true, then the client is redirected to the List page so that the list of users is displayed, reflecting the new addition.
+
+                //                If the Succeeded property is false, then the sequence of IdentityError objects provided by the Errors property is enumerated, 
+                //with the Description property used to create a model - level validation error using the ModelState.AddModelError method.
+                //To test the ability to create a new user account, restart ASP.NET Core and request http://localhost:5000/users/list. Click 
+                //                the Create button and fill in the form .
+
+                if (result.Succeeded)
+                {
+                    return RedirectToPage("List");
+                }
+                foreach (IdentityError err in result.Errors)
+                {
+                    ModelState.AddModelError("", err.Description);
+                }
+            }
+            return Page();
+        }
+    }
+}

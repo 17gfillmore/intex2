@@ -1,0 +1,44 @@
+﻿@page
+@model DetailsModel
+<!--The HttpContext.User property can be accessed through the User convenience property defined by the PageModel and
+ControllerBase classes. This Razor Page confirms that there is an authenticated user associated with the request and gets the
+IdentityUser object that describes the user-->
+<table class="table table-sm table-bordered">
+    <tbody>
+        @if (Model.IdentityUser == null)
+        {
+            <tr><th class="text-center">No User</th></tr>
+        }
+        else
+        {
+            <tr><th>Name</th><td>@Model.IdentityUser.UserName</td></tr>
+            <tr><th>Email</th><td>@Model.IdentityUser.Email</td></tr>
+            //<tr><th>Role</th><td>@Model.IdentityRole.Name</td></tr>
+        }
+        </tbody>
+</table>
+@functions {
+    public class DetailsModel : PageModel
+    {
+        private UserManager<IdentityUser> userManager;
+        private RoleManager<IdentityRole> roleManager;
+
+        public DetailsModel(UserManager<IdentityUser> UserManager, RoleManager<IdentityRole> RoleManager)
+        {
+            userManager = UserManager;
+            roleManager = RoleManager;
+
+        }
+        public IdentityUser IdentityUser { get; set; }
+  
+
+        public async Task OnGetAsync()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                IdentityUser = await userManager.FindByNameAsync(User.Identity.Name);
+            
+            }
+        }
+    }
+}

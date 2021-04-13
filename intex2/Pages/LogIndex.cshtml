@@ -1,0 +1,47 @@
+﻿@page "/pages"
+@model DetailsModel
+<!--This is the index page after the user logs in-->
+
+<h4 class="bg-primary text-white text-center p-2">Data</h4>
+
+<h4>Welcome @Model.IdentityUser.UserName </h4>
+<br />
+<p>This is the home page after the user logs in</p>
+<br />
+
+<!--Dynamic options based upon the kind of user-->
+@if (Model.IdentityUser.UserName == "admin")
+{
+    <a class="btn btn-primary" href="/Roles/List">Manage Admin Users</a>
+}
+else
+{
+    <a class="btn btn-primary" href="/Users/MomiasDatabase">Look through database</a>
+}
+
+<!--Imports the model where the username and email is stored is stored-->
+@functions {
+    public class DetailsModel : PageModel
+    {
+        private UserManager<IdentityUser> userManager;
+        private RoleManager<IdentityRole> roleManager;
+
+        public DetailsModel(UserManager<IdentityUser> UserManager, RoleManager<IdentityRole> RoleManager)
+        {
+            userManager = UserManager;
+            roleManager = RoleManager;
+
+        }
+        public IdentityUser IdentityUser { get; set; }
+
+
+        public async Task OnGetAsync()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                IdentityUser = await userManager.FindByNameAsync(User.Identity.Name);
+
+            }
+        }
+    }
+}
