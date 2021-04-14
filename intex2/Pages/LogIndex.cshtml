@@ -8,8 +8,8 @@
     <div class="container">
         <div class="row margin-5-half-rem-bottom align-items-center">
             <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
-                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Welcome @Model.IdentityUser.UserName</h5>
-                <p class="m-0 d-block">See the quick links on the dashboard below to best help you do you job!</p>
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Welcome, @Model.IdentityUser.UserName</h5>
+                <p class="m-0 d-block"></p>
             </div>
         </div>
         <div class="row">
@@ -20,15 +20,16 @@
                         <div class="swiper-slide box-shadow-small">
                             <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large">
                                 <!--Dynamic options based upon the kind of user-->
-                                <h3>Your Dashboard</h3>
+                                <h5>YOUR DASHBOARD</h5>
                                 @if (Model.IdentityUser.UserName == "admin")
                                 {
-                                    <a class="btn btn-fancy btn-medium btn-dark-gray" href="/Roles/List">Manage Admin Users</a>
-                                    <a class="btn btn-fancy btn-medium btn-outline-dark-gray" href="/Users/AddBurial">Add or Edit Records</a>
+                                    <a class="btn btn-fancy btn-medium btn-outline-dark-gray" href="/Roles/List">Manage Admin Users</a>
+                                    <a class="btn btn-fancy btn-medium btn-outline-dark-gray" href="/Users/AddBurial">Add Burial Record</a>
+                                    <a class="btn btn-fancy btn-medium btn-outline-dark-gray" href="/Users/MomiasDatabase">View Records</a>
                                 }
                                 else
                                 {
-                                    <a class="btn btn-fancy btn-medium btn-dark-gray" href="/Users/MomiasDatabase">Look through database</a>
+                                    <a class="btn btn-fancy btn-medium btn-dark-gray" href="/Users/MomiasDatabase">View Database</a>
                                     <a class="btn btn-fancy btn-medium btn-outline-dark-gray" href="/Users/AddBurial">Add or Edit Record</a>
                                 }
                             </div>

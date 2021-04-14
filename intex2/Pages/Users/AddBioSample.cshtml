@@ -1,5 +1,107 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@page
+@model ListModel
+
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Add Biological Sample Record</h5>
+                <p class="m-0 d-block">Fill in the information below and then click submit. Remember, don't skip fields!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                <div>
+
+                    @*BEGIN FORM*@
+                    <form method="post">
+                        <div class="row m-1 p-1">
+                            <h6>Biological Sample Information</h6>
+                        </div>
+
+                        @*main artifact information set*@
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide box-shadow-small">
+
+                                <div class="row m-1 p-1">
+                                    <div class="col-4 " >
+                                        <label asp-for="bioSample.BurialId">Burial ID</label><br />
+                                        @if (Model.burialId == null)
+                                         {
+                                            <input asp-for="bioSample.BurialId" />
+                                         }
+                                         else
+                                         {
+                                            <input asp-for="bioSample.BurialId" value="@Model.burialId.BurialId1" />
+                                         }
+                                    </div>
+                                </div>
+                                <div class="row m-1 p-1">
+                                    <div class="col-4">
+                                        <label asp-for="bioSample.SampleDate" >Sample date</label>
+                                        <input asp-for="bioSample.SampleDate"  type="date" />
+                                    </div>
+                                    <div class="col-4">
+                                        <label asp-for="bioSample.SampleDescription" >Sample description</label><br />
+                                        <textarea asp-for="bioSample.SampleDescription"  rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row m-1 p-1">
+                                    <div class="col-4">
+                                        <label asp-for="bioSample.RackNum" >Rack number</label>
+                                        <input asp-for="bioSample.RackNum"  />
+                                    </div>
+                                    <div class="col-4">
+                                        <label asp-for="bioSample.BagNum" >Bag number</label>
+                                        <input asp-for="bioSample.BagNum"  />
+                                    </div>
+                                </div>
+                                <div class="row m-1 p-1">
+                                    <div class="col-4">
+                                        <label asp-for="bioSample.Initials" >Initials</label>
+                                        <input asp-for="bioSample.Initials"  />
+                                    </div>
+                                    <div class="col-4">                                    
+                                        <label asp-for="bioSample.PreviouslySampled">Previously sampled?</label>
+                                        <select asp-for="bioSample.PreviouslySampled">
+                                            <option value="">Select one</option>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <br />
+                        <button class="btn btn-primary" type="submit" value="AddBioSample">Add record</button>
+
+                    </form>
+                </div>
+            </div>
+        </div><br><br><br>
+    </div>
+</section>
+
+
+
+
+@functions {
+    public class ListModel : ResearchPageModel
+    {
+        public UserManager<IdentityUser> UserManager;
+        public ListModel(UserManager<IdentityUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public BurialId burialId { get; set; }
+
+        public BiologicalSample bioSample { get; set; }
+    }
 }
+

@@ -11,11 +11,11 @@ namespace intex2.Models
         public string BurialId { get; set; }
         public double? ClusterNum { get; set; }
         public double? RackNum { get; set; }
-        public string BagNum { get; set; }
+        public string? BagNum { get; set; }
         public double? SampleDate { get; set; }
-        public string PreviouslySampled { get; set; }
-        public string SampleNotes { get; set; }
-        public string Initials { get; set; }
+        public string? PreviouslySampled { get; set; }
+        public string? SampleNotes { get; set; }
+        public string? Initials { get; set; }
         public double? SampleNumber { get; set; }
         public double? MaximumCranialLength { get; set; }
         public double? MaximumCranialBreadth { get; set; }
@@ -26,5 +26,6 @@ namespace intex2.Models
         public double? NasionProsthion { get; set; }
         public double? MaximumNasalBreadth { get; set; }
         public double? InterorbitalBreadth { get; set; }
+        public string? SampleDescription { get; set; }
     }
 }
