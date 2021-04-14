@@ -1,0 +1,380 @@
+﻿@*View for Showing One Entry in the Database*@
+@page
+@model ListModel
+
+<!-- start section -->
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Add Burial Record</h5>
+                <p class="m-0 d-block">Fill in the information below and then click submit. Remember, don't skip a box!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                <div>
+                    <div class="row m-1 p-1">
+                        <h6>REQUIRED INFORMATION</h6>
+                    </div>
+
+                    @*BEGIN FORM*@
+                    <form asp-controller="Users" asp-action="AddBurial" method="post">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide box-shadow-small">
+
+
+
+                                @*required information accordion*@
+                                <div class="accordion" id="accordion-1">
+                                    <!-- start location records -->
+                                    <div class="card">
+                                        <div class="card-header" id="heading1">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                                Burial ID
+                                            </button>
+                                        </div>
+                                        <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-1">
+                                            <div class="card-body">
+
+                                                <div class="row m-1 p-1">
+                                                    <h6>Square</h6>
+                                                </div>
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="burialId.LowPairNs">Low Pair N/S</label>
+                                                        <input asp-for="burialId.LowPairNs" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="burialId.HighPairNs">High Pair N/S</label>
+                                                        <input asp-for="burialId.HighPairNs" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="burialId.BurialLocationNs">Burial Location N/S</label>
+                                                        <input asp-for="burialId.BurialLocationNs" />
+                                                    </div>
+                                                </div>
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="burialId.LowPairEw">Low Pair E/W</label>
+                                                        <input asp-for="burialId.LowPairEw" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="burialId.HighPairEw">High Pair E/W</label>
+                                                        <input asp-for="burialId.HighPairEw" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="burialId.BurialLocationEw">Burial Location E/W</label>
+                                                        <input asp-for="burialId.BurialLocationEw" />
+                                                    </div>
+                                                </div>
+                                                <br /><br />
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="burialId.BurialArea">Area</label><br />
+                                                        <select asp-for="burialId.BurialArea">
+                                                            <option value="">Select area</option>
+                                                            <option value="NW">NW</option>
+                                                            <option value="NE">NE</option>
+                                                            <option value="SW">SW</option>
+                                                            <option value="SE">SE</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4"></div>
+                                                    <div class="col-4">
+                                                        <label asp-for="burialCharacteristic.Cluster">Cluster (only if needed)</label>
+                                                        <input asp-for="burialCharacteristic.Cluster" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="burialId.BurialNum">Burial Number</label><br />
+                                                        <input asp-for="burialId.BurialNum" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- excavation metrics -->
+                                    <div class="card">
+                                        <div class="card-header" id="heading-2">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                                Metrics
+                                            </button>
+                                        </div>
+                                        <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-1">
+                                            <div class="card-body">
+
+                                                <div class="row m-1 p-1">
+                                                    <p>All excavation metrics should be recorded in meters.</p>
+
+                                                </div>
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4 ">
+                                                        <label asp-for="burialCharacteristic.SouthToHead">South to head</label>
+                                                        <input asp-for="burialCharacteristic.SouthToHead" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="burialCharacteristic.SouthToFeet">South to feet</label>
+                                                        <input asp-for="burialCharacteristic.SouthToFeet" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="burialCharacteristic.WestToHead">West to head</label>
+                                                        <input asp-for="burialCharacteristic.WestToHead" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="burialCharacteristic.WestToFeet">West to feet</label>
+                                                        <input asp-for="burialCharacteristic.WestToFeet" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="burialCharacteristic.LengthRemainsMeasured">Length</label>
+                                                        <input asp-for="burialCharacteristic.LengthRemainsMeasured" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="burialCharacteristic.DepthRemains">Depth</label>
+                                                        <input asp-for="burialCharacteristic.DepthRemains" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*additional information*@
+                                    <div class="card">
+                                        <div class="card-header" id="heading-3">
+
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                                                Observation
+                                            </button>
+
+                                        </div>
+                                        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-1">
+                                            <div class="card-body">
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label>Photo documentation?</label>
+                                                        <select>
+                                                            <option value="">Select one</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="burialNote.BurialNotes">Burial Goods</label>
+                                                        <textarea asp-for="burialNote.BurialNotes" rows="4"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="row m-1 p-1">
+                            <h6>ADDITIONAL INFORMATION</h6>
+                        </div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide box-shadow-small">
+                                @*additional information accordion*@
+                                <div class="accordion" id="accordion-2">
+
+
+                                    @*mummy characteristics card*@
+                                    <div class="card">
+                                        <div class="card-header" id="heading-one">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-one" aria-expanded="true" aria-controls="collapse-one">
+                                                Mummy characteristics
+                                            </button>
+                                        </div>
+                                        <div id="collapse-one" class="collapse " aria-labelledby="heading-one" data-parent="#accordion-2">
+                                            <div class="card-body">
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="remainsCharacteristic.HairColor">Hair color</label><br />
+                                                        <select asp-for="remainsCharacteristic.HairColor">
+                                                            <option value="">Select one</option>
+                                                            <option value="b">Brown</option>
+                                                            <option value="k">Black</option>
+                                                            <option value="a">Brown-Red</option>
+                                                            <option value="r">Red/Red-Bl</option>
+                                                            <option value="d">Blonde</option>
+                                                            <option value="u">Unknown</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="remainsCharacteristic.GenderBodyCol">Body Gender</label><br />
+                                                        <select asp-for="remainsCharacteristic.GenderBodyCol">
+                                                            <option value="">Select one</option>
+                                                            <option value="f">Female</option>
+                                                            <option value="m">Male</option>
+                                                            <option value="u">Undetermine</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <br>
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="remainsCharacteristic.PreservationIndex">Preservation Index</label><br />
+                                                        <select asp-for="remainsCharacteristic.PreservationIndex">
+                                                            <option value="">Select one</option>
+                                                            <option value="i">I</option>
+                                                            <option value="ii">II</option>
+                                                            <option value="iii">III</option>
+                                                            <option value="iv">IV</option>
+                                                            <option value="v">V</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="remainsCharacteristic.PreservationNotes">Preservation notes</label>
+                                                        <input asp-for="remainsCharacteristic.PreservationNotes" />
+                                                    </div>
+                                                </div>
+                                                <br /><br />
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label asp-for="remainsCharacteristic.BurialWrapping">Burial wrapping</label>
+                                                        <input asp-for="remainsCharacteristic.BurialWrapping" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label asp-for="remainsCharacteristic.FaceBundle">Face bundle</label>
+                                                        <input asp-for="remainsCharacteristic.FaceBundle" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*placeholder card*@
+                                    <!--<div class="card">
+                                        <div class="card-header" id="heading-two">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-two" aria-expanded="false" aria-controls="collapse-two">
+                                                Placeholder
+                                            </button>
+                                        </div>
+                                        <div id="collapse-two" class="collapse" aria-labelledby="heading-two" data-parent="#accordion-2">
+                                            <div class="card-body">
+
+                                                <div class="row m-1 p-1">
+                                                    <p>All excavation metrics should be recorded in meters.</p>
+
+                                                </div>
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4 ">
+                                                        <label>South to head</label>
+                                                        <input />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label>South to feet</label>
+                                                        <input />
+                                                    </div>
+                                                </div>
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label>West to head</label>
+                                                        <input />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label>West to feet</label>
+                                                        <input />
+                                                    </div>
+                                                </div>
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label>Length</label>
+                                                        <input />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label>Depth</label>
+                                                        <input />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                    @*placeholder card*@
+                                    <!--<div class="card">
+                                        <div class="card-header" id="heading-three">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-three" aria-expanded="false" aria-controls="collapse-three">
+                                                Placeholder 2
+                                            </button>
+                                        </div>
+                                        <div id="collapse-three" class="collapse" aria-labelledby="heading-three" data-parent="#accordion-2">
+                                            <div class="card-body">
+
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label>Photo</label>
+                                                        <input />
+                                                    </div>
+                                                </div>
+                                                <div class="row m-1 p-1">
+                                                    <div class="col-4">
+                                                        <label>Burial Goods</label>
+                                                        <input />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div asp-validation-summary="All"></div>
+
+                    <button class="btn btn-primary" type="submit">Add record</button>
+
+
+                </div>
+            </div>
+        </div><br><br><br>
+    </div>
+</section>
+<!-- end section -->
+
+
+
+@functions {
+    public class ListModel : ResearchPageModel
+    {
+        public UserManager<IdentityUser> UserManager;
+        public ListModel(UserManager<IdentityUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public BurialId burialId { get; set; }
+
+        public BurialCharacteristic burialCharacteristic { get; set; }
+
+        public BurialNote burialNote { get; set; }
+
+        public RemainsCharacteristic remainsCharacteristic { get; set; }
+    }
+}
+
