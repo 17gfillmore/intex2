@@ -1,0 +1,28 @@
+﻿@page
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Success! " + Model.burialId.BurialId1 + " added.";
+}
+
+
+@model ListModel
+
+
+<p>"Success! " + @Model.burialId.BurialId1 + " added."</p>
+
+
+
+@functions {
+    public class ListModel : ResearchPageModel
+    {
+        public UserManager<IdentityUser> UserManager;
+        public ListModel(UserManager<IdentityUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public BurialId burialId { get; set; }
+    }
+}

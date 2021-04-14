@@ -11,5 +11,6 @@ namespace intex2.Pages
     public class ResearchPageModel : PageModel
     {
 
+
     }
 }
