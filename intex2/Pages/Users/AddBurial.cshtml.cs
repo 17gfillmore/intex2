@@ -1,34 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using intex2.Models;
+using Microsoft.AspNetCore.Identity;
+using intex2.Pages;
+using intex2.Pages.Users;
 
-namespace intex2.Controllers
+namespace intex2.Pages.Users
 {
-    public class UsersController : Controller
+    public class AddBurialModel : PageModel
     {
-        private readonly ILogger<UsersController> _logger;
-
         private MummyDBContext context { get; set; }
 
-        public UsersController(ILogger<UsersController> logger, MummyDBContext ctx)
+        public AddBurialModel(MummyDBContext ctx)
         {
-            _logger = logger;
             context = ctx;
         }
 
-        [HttpGet]
-        public IActionResult AddBurial()
+        public IActionResult OnGet()
         {
-            return View("test");
+            return Page();
         }
 
-        [HttpPost]
-        public IActionResult AddBurial(BurialId burialId, BurialCharacteristic burialCharacteristic, BurialNote burialNote, RemainsCharacteristic remainsCharacteristic)
+        public IActionResult OnPost(BurialId burialId, BurialCharacteristic burialCharacteristic, BurialNote burialNote, RemainsCharacteristic remainsCharacteristic)
         {
             // using the information from the form, concatenate the BurialId1
             string burId = burialId.BurialLocationNs + " " + burialId.LowPairNs + "/" + burialId.HighPairNs + " " +
@@ -42,7 +40,7 @@ namespace intex2.Controllers
             remainsCharacteristic.BurialId = burId;
 
             // if the objects are valid, save them to the db context
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 context.BurialIds.Add(burialId);
                 context.BurialCharacteristics.Add(burialCharacteristic);
@@ -51,19 +49,14 @@ namespace intex2.Controllers
 
                 context.SaveChanges();
 
-                return View("Confirmation", burialId);
+                return RedirectToPage("./BurialConfirmation", burialId);
             }
             else
             {
-                return View();
+                return Page();
             }
-        }
 
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -3,14 +3,14 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "Success! " + Model.burialId.BurialId1 + " added.";
+    ViewData["Title"] = "Success! " + Model.bioSample.BiosampleId + " added to " + Model.bioSample.BurialId + ".";
 }
 
 
 @model ListModel
 
 
-<p>"Success! " + @Model.burialId.BurialId1 + " added."</p>
+<p>Success! @Model.bioSample.BiosampleId added to @Model.bioSample.BurialId .</p>
 
 
 
@@ -23,6 +23,6 @@
             UserManager = userManager;
         }
 
-        public BurialId burialId { get; set; }
+        public BiologicalSample bioSample { get; set; }
     }
 }

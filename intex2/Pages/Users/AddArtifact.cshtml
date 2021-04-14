@@ -1,5 +1,138 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@page
+@model ListModel
+
+<section class="overflow-visible border-top border-color-medium-gray bg-light-gray">
+    <div class="container">
+        <div class="row margin-5-half-rem-bottom align-items-center">
+            <div class="col-12 col-lg-6 col-md-7 text-center text-md-left sm-margin-10px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray letter-spacing-minus-1px text-uppercase margin-5px-bottom">Add Artifact Record</h5>
+                <p class="m-0 d-block">Fill in the information below and then click submit. Remember, don't skip fields!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
+                <div>
+
+                    @*BEGIN FORM*@
+                    <form method="post">
+                        <div class="row m-1 p-1">
+                            <h6>Artifact Information</h6>
+                        </div>
+
+                        @*main artifact information set*@
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide box-shadow-small">
+
+                                <div class="row m-1 p-1">
+                                    <div class="col-4 ">
+                                        <label asp-for="artifact.BurialId">Burial ID</label><br />
+                                        @if (Model.burialId == null)
+                                        {
+                                            <input asp-for="artifact.BurialId" />
+                                        }
+                                        else
+                                        {
+                                            <input asp-for="artifact.BurialId" value="@Model.burialId.BurialId1" />
+                                        }
+                                    </div>
+                                    <div class="col-4">
+                                        <label asp-for="artifact.ArtifactDescription">Artifact description</label><br />
+                                        <textarea asp-for="artifact.ArtifactDescription" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row m-1 p-1">
+                                    <div class="col-4">
+                                        <label asp-for="artifact.PhotoDate" >Photo date</label>
+                                        <input asp-for="artifact.PhotoDate" type="date" />
+                                    </div>
+                                    <div class="col-4">
+                                        <label asp-for="artifact.ScientificDate" >Scientific date</label>
+                                        <input  asp-for="artifact.ScientificDate" type="date" />
+                                    </div>
+                                </div>
+                                <div class="row m-1 p-1">
+                                    <div class="col-4">
+                                        <label asp-for="artifact.Sampled" >Sampled?</label>
+                                        <input asp-for="artifact.Sampled"  class="sampled_bool" type="checkbox" name="sampled_bool" value="true" onchange="valueChanged()" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <br />
+
+                        @*sample information fieldset*@
+                        <div class="sampling_info row m-1 p-1 " style="display: none">
+                            <h6>Sample Information</h6>
+                        </div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide box-shadow-small">
+
+                                <fieldset class="sampling_info" style="display: none">
+
+                                    <div class="row m-1 p-1">
+                                        <div class="col-4">
+                                            <label asp-for="artifact.SampledDate" >Sample date</label>
+                                            <input asp-for="artifact.SampledDate"  type="date" />
+                                        </div>
+                                        <div class="col-4">
+                                            <label asp-for="artifact.SampleDescription" >Sample description</label><br />
+                                            <textarea  asp-for="artifact.SampleDescription" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row m-1 p-1">
+                                        <div class="col-4">
+                                            <label asp-for="artifact.RackNum" >Rack number</label>
+                                            <input  asp-for="artifact.RackNum" />
+                                        </div>
+                                        <div class="col-4">
+                                            <label asp-for="artifact.BagNum" >Bag number</label>
+                                            <input  asp-for="artifact.BagNum" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                            </div>
+                        </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <br />
+                        <button class="btn btn-primary" type="submit" value="AddArtifact">Add record</button>
+
+                    </form>
+                </div>
+            </div>
+        </div><br><br><br>
+    </div>
+</section>
+
+
+@*if the "sampled?" box is checked, display the additional form fields for collecting sample info*@
+<script type="text/javascript">$(".sampling_info").hide();
+
+
+    function valueChanged() {
+
+        if ($('.sampled_bool').is(":checked"))
+            $(".sampling_info").show();
+        else
+            $(".sampling_info").hide();
+    }
+</script>
+
+
+@functions {
+    public class ListModel : ResearchPageModel
+    {
+        public UserManager<IdentityUser> UserManager;
+        public ListModel(UserManager<IdentityUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public BurialId burialId { get; set; }
+
+        public Artifact artifact { get; set; }
+    }
 }
+

@@ -1,0 +1,28 @@
+﻿@page
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Success! " + Model.artifact.ArtifactId + " added to " + Model.artifact.BurialId + ".";
+}
+
+
+@model ListModel
+
+
+<p>Success! @Model.artifact.ArtifactId record added to @Model.artifact.BurialId .</p>
+
+
+
+@functions {
+    public class ListModel : ResearchPageModel
+    {
+        public UserManager<IdentityUser> UserManager;
+        public ListModel(UserManager<IdentityUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public Artifact artifact { get; set; }
+    }
+}
