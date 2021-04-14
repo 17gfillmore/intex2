@@ -1,0 +1,132 @@
+﻿@*Page to show all records in Database and Filter by Category*@
+
+@model IndexViewModel
+<!-- start page title -->
+<section class="p-0">
+    <div class="container-fluid position-relative">
+        <div class="row">
+            <div class="swiper-container white-move full-screen md-h-650px sm-h-500px">
+                <div class="swiper-slide cover-background" style="background-image:url('/images/search.jpg');">
+                    <div class="opacity-extra-medium bg-dark-slate-blue"></div>
+                    <div class="container h-100">
+                        <div class="row justify-content-center h-100">
+                            <div class="col-12 col-xl-6 col-sm-7 d-flex flex-column justify-content-center text-center h-100">
+                                <span class="alt-font font-weight-500 text-extra-medium letter-spacing-2px text-white text-uppercase d-block margin-35px-bottom sm-margin-15px-bottom">Welcome to BYU's Egypt Excavation Project Team</span>
+                                <h1 class="alt-font font-weight-600 title-medium text-white text-uppercase letter-spacing-minus-4px margin-45px-bottom sm-letter-spacing-minus-1px sm-margin-30px-bottom text-shadow-large sm-no-text-shadow xs-w-90 mx-auto">Mummy Search Page</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title -->
+<!-- start section -->
+<section class="bg-light-gray pt-0">
+    <br>
+    <div class="container">
+        <div class="row"></div>
+        <div class="col-12 text-center" style="max-width: 1200px">
+            <div class="bg-medium-dark-gray"></div>
+            <div class="row">
+                <div class="col-12 col-xl-4 col-md-3 col-sm-10 align-items-left text-black text-md-left sm-margin-30px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                    <vc:filter />
+                </div>
+                <!-- Card 1 (placeholder) -->
+                <div class="col-12 col-xl-8 col-md-9 text-center text-md-left wow animate__fadeIn" data-wow-delay="0.2s">
+                    <h5 class="alt-font text-black font-weight-700 mb-0 md-w-90 sm-w-100"><strong>Search results</strong></h5>
+                    <div>
+                        <br>
+                        @foreach (var x in Model.Remains)
+                        {
+                            <div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
+                                <div class="row">
+                                    <div class="col-12 text-center" style="max-width: 1200px">
+                                        <div class="bg-medium"></div>
+                                        <div class="row">
+                                            <div class="col-12 col-xl-4 col-md-3 col-sm-10 align-items-center text-black text-md-left sm-margin-30px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                                                <img src="/images/mummy1.jpg" width="90%">
+                                            </div>
+                                            <div class="col-12 col-xl-8 col-md-9 text-center text-md-left wow animate__fadeIn" data-wow-delay="0.2s">
+                                                <div class="position-relative bg-white padding-2-rem-all md-padding-2-rem-lr">
+
+                                                    <span class="alt-font font-weight-500 text-extra-dark-gray">Location:</span> @x.BurialId<br>
+                                                    <span class="alt-font font-weight-500 text-extra-dark-gray">Gender:</span> @x.GenderBodyCol<br>
+                                                    <span class="alt-font font-weight-500 text-extra-dark-gray">Hair Color:</span> @x.HairColor<br>
+                                                    <span class="alt-font font-weight-500 text-extra-dark-gray">Age:</span> @x.EstimateAge<br>
+                                                    @foreach (var y in Model.Burials)
+                                                    {
+                                                        @if (x.BurialId == y.BurialId)
+                                                        {
+                                                            <p><span class="alt-font font-weight-500 text-extra-dark-gray">Burial Depth:</span> @y.DepthRemains meters</p> <br>
+                                                            <p><span class="alt-font font-weight-500 text-extra-dark-gray">Burial Depth:</span> @y.HeadDirection</p> <br>
+                                                        }
+                                                    }
+                                                    <form asp-action="Mummy" asp-controller="Home" method="get">
+                                                        <input type="hidden" name="Id" value="@x.BurialId" />
+                                                        <button type="submit" class="btn btn-sm btn-primary">
+                                                            View All Record Info
+                                                        </button>
+                                                    </form>
+                                                    <form href="/Users/Editor">
+                                                        <input type="hidden" name="Id" value="@x.BurialId" />
+                                                        <button type="submit" class="btn btn-sm btn-secondary">
+                                                            Edit this Record
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div page-info="@Model.pageNum"
+                             page-classes-enabled="true"
+                             page-class="btn" page-class-normal="btn-outline-dark"
+                             page-class-selected="btn-primary">
+                        </div>
+                    </div><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+<!-- start section -->
+<section class="wow animate__fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <div class="bg-medium-dark-gray"></div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-xl-8 col-md-9 col-sm-10 text-center text-md-left sm-margin-30px-bottom wow animate__fadeIn" data-wow-delay="0.1s">
+                        <h6 class="alt-font text-black font-weight-500 mb-0 md-w-90 sm-w-100">Want a mummy <strong>named after you</strong>?</h6>
+                    </div>
+                    <div class="col-12 col-xl-4 col-md-3 text-center text-md-right wow animate__fadeIn" data-wow-delay="0.2s">
+                        <a href="http://www.byu.edu" class="btn btn-medium btn-dark-gray" target="__blank">Message us!<span class="bg-dark-gray"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<script>
+    var coll = document.getElementsByClassName("my-collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
