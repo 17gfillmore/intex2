@@ -2,6 +2,8 @@
     ViewBag.Title = "Mummy";
 }
 
+@model MummyViewModel
+
 <!-- start page title -->
 <section class="p-0">
     <div class="container-fluid position-relative">
@@ -34,7 +36,7 @@
                 <div class="row">
                     <div class="col-12 col-sm text-center xs-margin-30px-bottom wow animate__fadeIn">
                         <i class="fa fa-child icon-medium text-brown margin-20px-bottom sm-no-margin"></i>
-                        <span class="alt-font font-weight-500 text-small line-height-18px text-uppercase d-block">30 yrs.<br>at death</span>
+                        <span class="alt-font font-weight-500 text-small line-height-18px text-uppercase d-block">@foreach (var x in Model.Remains) { @x.EstimateAge }<br>at death</span>
                     </div>
                     <div class="col-12 col-sm offset-lg-1 text-center xs-margin-30px-bottom wow animate__fadeIn" data-wow-delay="0.2s">
                         <i class="fas fa-tooth icon-medium text-brown margin-20px-bottom sm-no-margin"></i>
@@ -42,7 +44,8 @@
                     </div>
                     <div class="col-12 col-sm offset-lg-1 text-center xs-margin-30px-bottom wow animate__fadeIn" data-wow-delay="0.4s">
                         <i class="fas fa-ruler icon-medium text-brown margin-20px-bottom sm-no-margin"></i>
-                        <span class="alt-font font-weight-500 text-small line-height-18px text-uppercase d-block">1.68 meters<br>tall</span>
+                        <span class="alt-font font-weight-500 text-small line-height-18px text-uppercase d-block">@foreach (var x in Model.Remains)
+                        {@x.BoneLength} meters<br>tall</span>
                     </div>
                 </div>
             </div>
@@ -136,13 +139,18 @@
                         <!-- start info banner slider item -->
                         <div class="swiper-slide box-shadow-small">
                             <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large">
-                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Location:</span> 120/130 N 10/20 NW #49</p>
-                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Gender:</span> Male</p>
+                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Location:</span> @foreach (var x in Model.Remains)
+                                {@x.BurialId}</p>
+                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Gender:</span> @foreach (var x in Model.Remains)
+                                {@x.GenderBodyCol}</p>
                                 <p><span class="alt-font font-weight-500 text-extra-dark-gray">Age at death:</span> 30</p>
-                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Length:</span> 1.68 m</p>
+                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Length:</span> @foreach (var x in Model.Remains)
+                                {@x.BoneLength} m</p>
                                 <p><span class="alt-font font-weight-500 text-extra-dark-gray">Teeth:</span> 4</p>
-                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Burial depth:</span> 1.2 m</p>
-                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Hair color:</span> Black</p>
+                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Burial depth:</span> @foreach (var x in Model.Burials)
+                                {@x.DepthRemains} m</p>
+                                <p><span class="alt-font font-weight-500 text-extra-dark-gray">Hair color:</span>@foreach (var x in Model.Remains)
+                                {@x.HairColor}</p>
                             </div>
                         </div>
                         <!-- end info banner slider item -->

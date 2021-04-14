@@ -1,0 +1,41 @@
+﻿
+@model List<RemainsCharacteristic>
+
+<a class="btn btn-block btn-outline-secondary" asp-action="Search" asp-controller="Home">Database-Clears Search</a>
+<br />
+    <h5 class="alt-font font-weight-600 mb-0 md-w-90 sm-w-100"><strong>Filter your search</strong></h5><br>
+    <!-- start collapsibles -->
+<form asp-action="Search" asp-controller="Home" method="get">
+    <div>
+        <!-- collapsible 1 -->
+        <button type="button" class="my-collapsible">Gender</button>
+        <div class="my-content">
+            <input type="checkbox" class="checkbox" name="male" value="M"/> Male<br>
+            <input type="checkbox" class="checkbox" name="female" value="F"/> Female
+        </div>
+
+        <!-- collapsible 2 -->
+        <button type="button" class="my-collapsible">Hair Color</button>
+        <div class="my-content">
+            <input type="checkbox" name="black" value="true"/> Black<br>
+            <input type="checkbox" name="blonde" value="true"/> Blonde<br>
+            <input type="checkbox" name="brown" value="true"/> Brown<br>
+        </div>
+
+        <!-- collapsible 3 -->
+        <button type="button" class="my-collapsible">Burial Depth</button>
+        <div class="my-content">
+            <input type="checkbox" name="depth" value="1"/> 0-1 meters<br>
+            <input type="checkbox" name="depth" value="2"/> 1-2 meters<br>
+            <input type="checkbox" name="depth" value="3"/> 2-3 meters<br>
+            <input type="checkbox" name="depth" value="4"/> 3-4 meters<br>
+            <input type="checkbox" name="depth" value="5"/> 4-5 meters<br>
+            <input type="checkbox" name="depth" value="6"/> 5+ meters<br>
+        </div>
+
+    </div><br>
+          <button type="submit" class="btn btn-fancy btn-medium btn-dark-gray">
+              Search
+          </button>
+    <!-- end collapsibles -->
+</form>
