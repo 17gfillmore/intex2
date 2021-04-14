@@ -14,61 +14,335 @@
         <div class="row">
             <div class="col-12 p-0 wow animate__fadeIn" data-wow-delay="0.4s">
                 <div>
+                    <div class="row m-1 p-1">
+                        <h6>REQUIRED INFORMATION</h6>
+                    </div>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide box-shadow-small">
-                            <!-- start location records -->
-                            <button type="button" class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large my-collapsible" style="padding: 17px;">I. Location</button>
-                            <div class="my-content">
-                                <div class="row"></div>
-                                <div class="col-12 text-center">
-                                    <div class="bg-medium-dark-gray"></div>
-                                    <div class="row">
-                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-black text-md-left">
-                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
-                                        </div>
-                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-center text-md-left">
-                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+
+                            @*required information accordion*@
+                            <div class="accordion" id="accordion-1">
+                                <!-- start location records -->
+                                <div class="card">
+                                    <div class="card-header" id="heading1">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                            Burial ID
+                                        </button>
+                                    </div>
+                                    <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-1">
+                                        <div class="card-body">
+
+                                            <div class="row m-1 p-1">
+                                                <h6>Square</h6>
+                                            </div>
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Low Pair N/S</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>High Pair N/S</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>Burial Location N/S</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Low Pair E/W</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>High Pair E/W</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>Burial Location E/W</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+                                            <br /><br />
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Area</label><br />
+                                                    <select>
+                                                        <option value="">Select area</option>
+                                                        <option value="NW">NW</option>
+                                                        <option value="NE">NE</option>
+                                                        <option value="SW">SW</option>
+                                                        <option value="SE">SE</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4"></div>
+                                                <div class="col-4">
+                                                    <label>Cluster (only if needed)</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Burial Number</label><br />
+                                                    <input />
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div><br><br>
-                            <!-- start location records -->
-                            <!-- start mummy records -->
-                            <button type="button" class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large my-collapsible" style="padding: 17px;">II. Mummy</button>
-                            <div class="my-content">
-                                <div class="row"></div>
-                                <div class="col-12 text-center">
-                                    <div class="bg-medium-dark-gray"></div>
-                                    <div class="row">
-                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-black text-md-left">
-                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
-                                        </div>
-                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-center text-md-left">
-                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+
+                                <!-- excavation metrics -->
+                                <div class="card">
+                                    <div class="card-header" id="heading-2">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                            Metrics
+                                        </button>
+                                    </div>
+                                    <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-1">
+                                        <div class="card-body">
+
+                                            <div class="row m-1 p-1">
+                                                <p>All excavation metrics should be recorded in meters.</p>
+
+                                            </div>
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4 ">
+                                                    <label>South to head</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>South to feet</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>West to head</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>West to feet</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Length</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>Depth</label>
+                                                    <input />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div><br><br>
-                            <!-- end mummy records -->
-                            <!-- start artifact records -->
-                            <button type="button" class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr text-large my-collapsible" style="padding: 17px;">III. Artifacts</button>
-                            <div class="my-content">
-                                <div class="row"></div>
-                                <div class="col-12 text-center">
-                                    <div class="bg-medium-dark-gray"></div>
-                                    <div class="row">
-                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-black text-md-left">
-                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
-                                        </div>
-                                        <div class="col-12 col-xl-6 col-md-6 align-items-center text-center text-md-left">
-                                            <h5 class="alt-font text-black font-weight-600"><strong>Inputs go here!!</strong></h5><br>
+
+                                @*additional information*@
+                                <div class="card">
+                                    <div class="card-header" id="heading-3">
+
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                                            Observation
+                                        </button>
+
+                                    </div>
+                                    <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-1">
+                                        <div class="card-body">
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Photo documentation?</label>
+                                                    <select>
+                                                        <option value="">Select one</option>
+                                                        <option value="true">Yes</option>
+                                                        <option value="false">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Burial Goods</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                            <!-- end artifact records -->
-                        </div><br>
+                        </div>
                     </div>
+
+                    <br />
+                    <div class="row m-1 p-1">
+                        <h6>ADDITIONAL INFORMATION</h6>
+                    </div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide box-shadow-small">
+                            @*additional information accordion*@
+                            <div class="accordion" id="accordion-2">
+
+
+                                @*mummy characteristics card*@
+                                <div class="card">
+                                    <div class="card-header" id="heading-one">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-one" aria-expanded="true" aria-controls="collapse-one">
+                                            Mummy characteristics
+                                        </button>
+                                    </div>
+                                    <div id="collapse-one" class="collapse " aria-labelledby="heading-one" data-parent="#accordion-2">
+                                        <div class="card-body">
+
+                                            <div class="row m-1 p-1">
+                                                <h4>Square</h4>
+                                            </div>
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Hair color</label><br />
+                                                    <select>
+                                                        <option value="">Select one</option>
+                                                        <option value="hair-b">Brown</option>
+                                                        <option value="hair-k">Black</option>
+                                                        <option value="hair-a">Brown-Red</option>
+                                                        <option value="hair-r">Red/Red-Bl</option>
+                                                        <option value="hair-d">Blonde</option>
+                                                        <option value="hair-u">Unknown</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>Body Gender</label><br />
+                                                    <select>
+                                                        <option value="">Select one</option>
+                                                        <option value="body-f">Female</option>
+                                                        <option value="body-m">Male</option>
+                                                        <option value="body-u">Undetermine</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Preservation Index</label><br />
+                                                    <select>
+                                                        <option value="">Select one</option>
+                                                        <option value="pres-i">I</option>
+                                                        <option value="pres-ii">II</option>
+                                                        <option value="pres-iii">III</option>
+                                                        <option value="pres-iv">IV</option>
+                                                        <option value="pres-v">V</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>Preservation notes</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+                                            <br /><br />
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Burial wrapping</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>Face bundle</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*placeholder card*@
+                                <div class="card">
+                                    <div class="card-header" id="heading-two">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-two" aria-expanded="false" aria-controls="collapse-two">
+                                            Placeholder
+                                        </button>
+                                    </div>
+                                    <div id="collapse-two" class="collapse" aria-labelledby="heading-two" data-parent="#accordion-2">
+                                        <div class="card-body">
+
+                                            <div class="row m-1 p-1">
+                                                <p>All excavation metrics should be recorded in meters.</p>
+
+                                            </div>
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4 ">
+                                                    <label>South to head</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>South to feet</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>West to head</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>West to feet</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Length</label>
+                                                    <input />
+                                                </div>
+                                                <div class="col-4">
+                                                    <label>Depth</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*placeholder card*@
+                                <div class="card">
+                                    <div class="card-header" id="heading-three">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-three" aria-expanded="false" aria-controls="collapse-three">
+                                            Placeholder 2
+                                        </button>
+                                    </div>
+                                    <div id="collapse-three" class="collapse" aria-labelledby="heading-three" data-parent="#accordion-2">
+                                        <div class="card-body">
+
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Photo</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+                                            <div class="row m-1 p-1">
+                                                <div class="col-4">
+                                                    <label>Burial Goods</label>
+                                                    <input />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div><br><br><br>
